@@ -1,0 +1,60 @@
+{% extends 'buyer/base.html' %}
+
+{% block title %}
+    首页
+{% endblock %}
+
+{% block content %}
+<div class="center_con clearfix">
+		<ul class="subnav fl">
+			<li><a href="/Buyer/goods_list/?keywords=1&type=t" class="fruit">新鲜水果</a></li>
+			<li><a href="/Buyer/goods_list/?keywords=2&type=t" class="seafood">海鲜水产</a></li>
+			<li><a href="/Buyer/goods_list/?keywords=3&type=t" class="meet">猪牛羊肉</a></li>
+			<li><a href="/Buyer/goods_list/?keywords=4&type=t" class="egg">禽类蛋品</a></li>
+			<li><a href="/Buyer/goods_list/?keywords=5&type=t" class="vegetables">新鲜蔬菜</a></li>
+			<li><a href="/Buyer/goods_list/?keywords=6&type=t" class="ice">速冻食品</a></li>
+		</ul>
+		<div class="slide fl">
+			<ul class="slide_pics">
+				<li><a href="/Buyer/goods_list/?keywords=1&type=t"><img src="/static/buyer/images/slide.jpg" alt="幻灯片"></a></li>
+				<li><a href="/Buyer/goods_list/?keywords=1&type=t"><img src="/static/buyer/images/slide02.jpg" alt="幻灯片"></a></li>
+				<li><a href="/Buyer/goods_list/?keywords=3&type=t"><img src="/static/buyer/images/slide03.jpg" alt="幻灯片"></a></li>
+				<li><a href="/Buyer/goods_list/?keywords=2&type=t"><img src="/static/buyer/images/slide04.jpg" alt="幻灯片"></a></li>
+				<li><a href="/Buyer/goods_list/?keywords=5&type=t"><img src="/static/buyer/images/slide05.jpg" alt="幻灯片"></a></li>
+			</ul>
+			<div class="prev"></div>
+			<div class="next"></div>
+			<ul class="points"></ul>
+		</div>
+		<div class="adv fl">
+			<a href="#"><img src="/static/buyer/images/adv01.jpg"></a>
+			<a href="#"><img src="/static/buyer/images/adv02.jpg"></a>
+		</div>
+	</div>
+    {% for ty in result %}
+    <div class="list_model">
+            <div class="list_title clearfix">
+                <h3 class="fl" id="mode101">{{ ty.type.type_label }}</h3>
+    			<div class="subtitle fl">
+    				<span>|</span>
+    				<a href="#">买不了吃亏！买不了上当！</a>
+
+    			</div>
+                <a href="/Buyer/goods_list/?keywords={{ ty.type.id }}&type=t" class="goods_more fr" id="fruit_more">查看更多 ></a>
+            </div>
+
+            <div class="goods_con clearfix">
+                <div class="goods_banner fl"><a href="/Buyer/goods_list/?keywords={{ ty.type.id }}&type=t"><img src="/static/{{ ty.type.type_picture }}"></a></div>
+                <ul class="goods_list fl">
+                    {% for all_type_good in ty.type_goods_list %}
+                    <li>
+                        <h4><a href="/Buyer/goods_details/{{ all_type_good.id }}/">{{ all_type_good.goods_name }}</a></h4>
+                        <a href="/Buyer/goods_details/{{ all_type_good.id }}/"><img src="/static/{{ all_type_good.picture }}"></a>
+                        <div class="prize">{{ all_type_good.goods_price }}￥</div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

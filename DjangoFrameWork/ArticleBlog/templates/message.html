@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <script src="/static/tiny_mce/tiny_mce.js"></script>
+    <script>
+        tinyMCE.init({
+            'mode':'textareas','theme':'advanced',
+            'width':920,'height':600,
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="con_content">
+        <div class="about_box">
+            <h2 class="nh1"><span>您现在的位置是：<a href="/index/" target="_blank">网站首页</a>>><a href="#" target="_blank">给我留言</a></span></h2>
+            <div class="dtxw box" style="text-align: center">
+                <form method="post">
+                    {% csrf_token %}
+                    <textarea></textarea>
+                    <input type="submit" value="提交" style="width: 200px;height: 100px;background-color:orangered;border: none;">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

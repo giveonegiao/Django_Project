@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 500px;
+            height: 500px;
+        }
+        body{
+            background-color:rgb(209, 177, 138)
+        }
+    </style>
+</head>
+<body>
+    {% if article %}
+        <a href="/book_list/">首页</a>
+        <h1 align="center">{{ article.title }}</h1>
+        <hr>
+        <div style="margin-bottom: 80px;">
+            <h3 style="float: left;margin-left: 200px;">{{ article.author }}</h3>
+            <h3 style="float: right;margin-right: 200px">{{ article.public_time }}</h3>
+        </div>
+        <hr>
+        <p style="text-align: center">
+        {{ article.content }}
+        </p>
+        <p style="text-align: center">
+            <img src="/static/{{ article.image }}">
+        </p>
+    {% else %}
+        <p>找不到文章</p>
+    {% endif %}
+</body>
+</html>

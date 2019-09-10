@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style>
+        body{
+            background-image: url('/static/images/bgc1.jpg');
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        p{
+            text-align: center;
+        }
+        input{
+            font-size: 24px;
+            width: 500px;
+            height: 40px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .register{
+            margin-top: 8%;
+        }
+        .submit{
+            border: none;
+            background-color: #f84949;
+        }
+    </style>
+    <script src="/static/jq/jquery.min.js"></script>
+</head>
+<body>
+    <form method="post" class="register">
+        {% csrf_token %}
+        <p>
+            <b style="margin-bottom: 100px;font-size: 40px">注册</b>
+        </p>
+        <p>
+            <input id="username" type="text" name="username" placeholder="用户名">
+        </p>
+        <p>
+            <input id="email" type="text" name="email" placeholder="邮箱">
+        </p>
+        <p>
+            <input id="password" type="password" name="password" placeholder="密码">
+        </p>
+        <p>
+            <input id="re_password" type="password" name="re_password" placeholder="确认密码">
+        </p>
+        <p>
+            <input class="submit" type="submit" value="提交">
+        </p>
+    </form>
+    <p id="errormeg" style="color: red"></p>
+    <p id="errormeg1" style="color: red"></p>
+    <p id="errormeg2" style="color: red"></p>
+    <script>
+        $("#email").blur(
+            function () {
+                var em=$("#email").val();
+                var url="/user_valid/?email="+em;
+                console.log(url);
+                if(em){
+                    $.ajax(
+                        {
+                            url:url,
+                            type:"get",
+                            data:"",
+                            success:function (value) {
+                                content=value["data"];
+                                $("#errormeg").text(content)
+                            },
+                            error:function (error) {
+                                console.log(error)
+                            }
+                        }
+                    )
+                }
+            }
+        );
+        $("#username").blur(
+            function () {
+                var uname=$("#username").val();
+                var url="/username_check/?username="+uname;
+                console.log(url);
+                if (uname){
+                    $.ajax(
+                        {
+                            url:url,
+                            type:"get",
+                            data:"",
+                            success:function (value) {
+                                content=value["data"];
+                                $("#errormeg1").text(content)
+                            },
+                            error:function (error) {
+                                console.log(error)
+                            }
+                        }
+                    )
+                }
+            }
+        )
+    </script>
+
+</body>
+</html>
+
+
+{#    <form>#}
+{##}
+{#        <input type="text" name="searchKey">#}
+{#        <input type="submit"  value="提交">#}
+{#    </form>#}
+{#    {% for a in request_form %}#}
+{#    <p>{{ a.title }}</p>#}
+{#    {% endfor %}#}
+
+{#    <hr>#}
+{#    <form action="" method="post">#}
+{#        {% csrf_token %}#}
+{#        <p>#}
+{#            <label>用户名</label>#}
+{#            <input type="text" name="username">#}
+{#        </p>#}
+{#        <p>#}
+{#            <label>密码</label>#}
+{#            <input type="password" name="password">#}
+{#        </p>#}
+{#        <p>#}
+{#            <input type="submit" value="提交">#}
+{#        </p>#}
+{#    </form>#}
+
+{#    <div>#}
+{#        <p>常规form</p>#}
+{#        <hr>#}
+{#        {{ register_form }}#}
+{#    </div>#}
+
+{#    <div>#}
+{#        <p>form  as_table</p>#}
+{#        <hr>#}
+{#        {{ register_form.as_table }}#}
+{#    </div>#}
+{#    <div>#}
+{#        <p>form  as_ul</p>#}
+{#        <hr>#}
+{#        {{ register_form.as_ul }}#}
+{#    </div>#}
+{#    <div>#}
+{#        <p>for  遍历</p>#}
+{#        <hr>#}
+{#        <table>#}
+{#            {% for f in register_form %}#}
+{#            <tr>#}
+{#                <th>{{ f.label }}</th>#}
+{#                <td>{{ f }}</td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#    </div>#}
+
+
+{#<div>#}
+{#    {{ register_form.as_p }}#}
+{#</div>#}

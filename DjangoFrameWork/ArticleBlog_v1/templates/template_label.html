@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <p>if标签案例</p>
+    <br>
+{#    {% if login_valid %}#}
+{#        <a href="">退出登录</a>#}
+{#    {% else %}#}
+{#        <a href="#">登录</a>#}
+{#    {% endif %}#}
+    <br>
+    {% ifequal login_valid 1 %}
+        <a href="">退出登录</a>
+    {% else %}
+        <a href="#">登录</a>
+    {% endifequal %}
+    <br>
+    <p>safa过滤器</p>
+    <br>
+    <p>{{ commit }}</p>
+{#    <p>{{ commit|safe }}</p>#}
+</div>
+</body>
+</html>

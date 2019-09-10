@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}这是七个人的博客文章首页{% endblock %}
+{% block style %}
+    <link href="../static/css/index.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="bloglist f_l">
+
+        {% for art in article_content %}
+          <h3><a href="/newabout/{{ art.id }}">{{ art.title }}</a></h3>
+          <figure><img src="/static/{{ art.picture }}" alt="{{ art.title }}"></figure>
+          <ul>
+            <p> {{ art.description }}</p>
+            <a title="{{ art.title }}" href="/newabout/{{ art.id }}" target="_blank" class="readmore">阅读全文&gt;&gt;</a>
+          </ul>
+          <p class="dateview"><span>{{ art.public_time }}</span><span>作者：{{ art.article_author.name }}</span></p>
+        {% endfor %}
+
+    </div>
+    <div class="r_box f_r">
+      <div class="tit01">
+        <h3 class="tit">关注我</h3>
+        <div class="gzwm">
+          <ul>
+            <li><a class="email" href="#" target="_blank">我的电话</a></li>
+            <li><a class="qq" href="https://mail.163.com/" target="_blank">我的邮箱</a></li>
+            <li><a class="tel" href="https://qzone.qq.com/" target="_blank">我的QQ</a></li>
+            <li><a class="prize" href="#">个人奖项</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--tit01 end-->
+
+      <div class="tuwen">
+        <h3 class="tit">图文推荐</h3>
+        <ul>
+
+            {% for art in article_recommend %}
+              <li><a href="/newabout/{{ art.id }}"><img src="/static/{{ art.picture }}"><b>{{ art.title }}</b></a>
+                <p><span class="tulanmu"><a href="/">{{ art.article_type.first.label }}</a></span><span class="tutime">{{ art.public_time }}</span></p>
+              </li>
+            {% endfor %}
+        </ul>
+      </div>
+      <div class="ph">
+        <h3 class="tit">点击排行</h3>
+        <ul class="rank">
+            {% for art in article_click %}
+            <li><a href="/newabout/{{ art.id }}" title="{{ art.title }}" target="_blank">{{ art.title }}</a></li>
+            {% endfor %}
+        </ul>
+      </div>
+      <div class="ad"> <img src="/static/images/03.jpg"> </div>
+    </div>
+  </div>
+{% endblock %}

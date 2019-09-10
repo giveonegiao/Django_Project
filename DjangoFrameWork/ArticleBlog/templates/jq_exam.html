@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/jq/jquery.min.js"></script>
+</head>
+<body>
+<input type="text" id="content">
+<input type="button" id="button" value="button">
+<script>
+    $(
+        function () {
+            $(button).click(
+                function () {
+                    alert('弟中弟')
+                }
+            )
+            $(content).dblclick(
+                function () {
+                    alert('啥都没有跑个球')
+                }
+            )
+        }
+    )
+</script>
+</body>
+</html>

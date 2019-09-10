@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1px" style="margin: 0 auto">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>故事</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in people %}
+                <tr>
+                    <td>{{ t.name }}</td>
+                    <td>{{ t.age }}</td>
+                    <td>{{ t.story }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+<ul>
+    {% for o in outer %}
+        <h3>这是outer的forloop：{{ forloop }}</h3>
+        {% for i in people %}
+            <p>这是people的forloop：{{ forloop }}</p>
+        {% endfor %}
+    {% endfor %}
+</ul>
+</body>
+</html>

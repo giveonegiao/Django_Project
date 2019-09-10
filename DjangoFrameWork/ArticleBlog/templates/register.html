@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="">用户名：</label>
+        <input type="text" name="username">
+    </p>
+    <p>
+        <label for="">密&nbsp;&nbsp;&nbsp;码：</label>
+        <input type="password" name="password">
+    </p>
+    <input type="submit" value="提交">
+</form>
+<div>
+        <p>常规form</p>
+        <hr>
+        {{ register_form }}
+    </div>
+    <div>
+        <p>form  as_p</p>
+        <hr>
+        {{ register_form.as_p }}
+    </div>
+    <div>
+        <p>form  as_table</p>
+        <hr>
+        {{ register_form.as_table }}
+    </div>
+    <div>
+        <p>form  as_ul</p>
+        <hr>
+        {{ register_form.as_ul }}
+    </div>
+    <div>
+        <p>for  遍历</p>
+        <hr>
+        <table>
+            {% for f in register_form %}
+            <tr>
+                <th>{{ f.label }}</th>
+                <td>{{ f }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

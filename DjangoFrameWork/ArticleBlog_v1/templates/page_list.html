@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: darkslategray;
+        }
+        a:hover{
+            color: blue;
+        }
+        body{
+            background-color:rgb(209, 177, 138)
+        }
+        .book{
+            margin: 0 auto;
+        }
+        .book caption{
+            font-size: 34px;
+        }
+        .book tr{
+            height: 100px;
+        }
+        .book tr td{
+            font-size: 24px;
+            height: 100px;
+            width: 200px;
+        }
+        .book tr td img{
+            height: 100px;
+            width: 100px;
+            transition: all 0.5s;
+        }
+        .book tr td img:hover{
+            transform: scale(1.15);
+
+        }
+    </style>
+</head>
+<body>
+    <table class="book">
+        <caption style="margin-bottom: 30px"><B>热门书籍</B></caption>
+        {% for b in books %}
+            <tr>
+                <td>{{ b.id }}</td>
+                <td><a href="/book/{{ b.id }}/"><img src="/static/{{ b.image }}"></a></td>
+                <td><a href="/book/{{ b.id }}/">{{ b.title }}</a></td>
+                <td>{{ b.author }}</td>
+                <td>{{ b.public_time }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

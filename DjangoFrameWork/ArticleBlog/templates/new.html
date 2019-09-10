@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}这是七个人的日记{% endblock %}
+
+{% block content %}
+    <div class="con_content">
+        <div class="about_box">
+          <h2 class="nh1"><span>您现在的位置是：<a href="/" target="_blank">网站首页</a>>><a href="#" target="_blank">个人日记</a></span><b>个人日记</b></h2>
+          <div class="dtxw box">
+            {% for art in page_article %}
+            <li>
+              <div class="dttext f_l">
+                <ul>
+                  <h2><a href="/newabout/{{ art.id }}">{{ art.title }}</a></h2>
+
+                  <span>{{ art.public_time }}</span>
+                </ul>
+              </div>
+              <div class="xwpic f_r"><a href="/"><img src="/static/{{ art.picture }}"></a></div>
+            </li>
+              {% endfor %}
+          </div>
+
+          <div class="pagelist">页次：{{ p }}/{{ article_list.num_pages}} 每页{{ page_size }} 总数{{ article_list.count }}
+              <a href="/new/1">首页</a><a href="/new/{{ last }}">上一页</a>
+                {% for pa in page_range %}
+                  <a href="/new/{{ pa }}">{{ pa }}</a>
+                {% endfor %}
+              <a href="/new/{{ next }}">下一页</a><a href="/new/{{ article_list.num_pages }}">尾页</a>
+          </div>
+        </div>
+    </div>
+{% endblock %}

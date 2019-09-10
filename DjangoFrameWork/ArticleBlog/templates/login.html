@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        body{
+            background-image: url('/static/images/bgc2.jpg');
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        p{
+            text-align: center;
+        }
+        input{
+            font-size: 24px;
+            width: 500px;
+            height: 40px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .login{
+            margin-top: 8%;
+        }
+        .l_register{
+            color: black;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .l_register:hover{
+            color: #f84949;
+        }
+
+    </style>
+</head>
+<body>
+<form method="post" class="login">
+    {% csrf_token %}
+    <p style="font-size: 40px;margin-bottom: 80px">
+        <b>登录</b>
+    </p>
+    <p>
+        <input type="text" name="username" id="username" placeholder="用户名">
+    </p>
+    <p>
+        <input type="password" name="password" placeholder="密码">
+    </p>
+    <p>
+        <input type="submit" value="登录">
+    </p>
+    <p>
+        <a href="/register/" class="l_register">注册>>></a>
+    </p>
+</form>
+</body>
+</html>

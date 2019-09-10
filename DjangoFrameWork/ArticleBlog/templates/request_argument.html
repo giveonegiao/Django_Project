@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {{ request_mothod }}
+    <hr>
+    {% for i in request_mothod %}
+        <p>{{ i }}</p>
+    {% endfor %}
+    </div>
+    <hr>
+    {{  request.META.items }}
+    <hr>
+    <div>
+        {% for key,values in request.META.items %}
+            <p>{{ key }}:{{ values }}</p>
+        {% endfor %}
+
+    </div>
+</body>
+</html>

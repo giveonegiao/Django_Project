@@ -1,0 +1,61 @@
+{% extends 'seller/base.html' %}
+{% block title %}
+    个人中心
+{% endblock %}
+{% block label %}
+    个人中心
+{% endblock %}
+{% block style %}
+    <style>
+        .table tr th{
+            padding-top: 30px;
+        }
+        .table tr td input{
+            margin-top: 10px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">个人名片</h6>
+        </div>
+{#        <div class="card-body">#}
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <table class="table" style="text-align: left">
+                <tr>
+                    <td rowspan="4"  width="200px" style="text-align: center">
+                        <img style="width: 330px;height:300px;" src="/static/seller/{{ user.photo }}">
+                        <input type="file" name="photo" class="" value="更换头像">
+                    </td>
+                    <th style="width: 50px;">姓名</th>
+                    <td style="width: 180px"><input type="text" class="form-control bg-light border-0 small" name="username" value="{{ user.username }}"></td>
+                    <th style="width: 50px;">年龄</th>
+                    <td style="width: 180px"><input type="text" class="form-control bg-light border-0 small" name="age" value="{{ user.age }}"></td>
+                </tr>
+                <tr>
+                    <th>性别</th>
+                    <td><input type="text" class="form-control bg-light border-0 small" name="gender" value="{{ user.gender }}"></td>
+                    <th>电话</th>
+                    <td><input type="text" class="form-control bg-light border-0 small" name="phone_number" value="{{ user.phone_number }}"></td>
+                </tr>
+                <tr>
+                    <th>邮箱</th>
+                    <td colspan="2"><input type="text" class="form-control bg-light border-0 small" name="email" value="{{ user.email }}" disabled></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>地址</th>
+                    <td colspan="3"><input type="text" class="form-control bg-light border-0 small" name="address" value="{{ user.address }}"></td>
+                </tr>
+                <tr>
+                    <th colspan="5" style="text-align: center">
+                        <input href="#" class="btn btn-warning" type="submit" value="完善用户信息">
+                    </th>
+                </tr>
+    </table>
+            </form>
+{#        </div>#}
+    </div>
+{% endblock %}

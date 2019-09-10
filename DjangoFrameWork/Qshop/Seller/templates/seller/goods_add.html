@@ -1,0 +1,64 @@
+{% extends 'seller/base.html' %}
+
+{% block title %}
+    添加商品
+{% endblock %}
+
+{% block label %}
+    添加商品
+{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">添加商品</h6>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+                <table class="table" style="text-align: left">
+                    <tr>
+                        <td rowspan="5"  width="200px" style="text-align: center">
+                            <img style="width: 200px;height:200px;">
+                            <input type="file" name="picture">
+                        </td>
+                        <th style="width: 150px;">商品编号</th>
+                        <td style="width: 180px"><input class="form-control bg-light border-0 small" type="text" name="goods_number"></td>
+                        <th style="width: 150px;">商品名称</th>
+                        <td style="width: 180px"><input class="form-control bg-light border-0 small" type="text" name="goods_name"></td>
+                    </tr>
+                    <tr>
+                        <th>商品价格</th>
+                        <td><input class="form-control bg-light border-0 small" type="text" name="goods_price"></td>
+                        <th>商品数量</th>
+                        <td><input class="form-control bg-light border-0 small" type="text" name="goods_count"></td>
+                    </tr>
+                    <tr>
+                        <th>商品保质期</th>
+                        <td><input class="form-control bg-light border-0 small" type="text" name="goods_safe_date"></td>
+                        <th>商品生产日期</th>
+                        <td><input class="form-control bg-light border-0 small" type="text" name="goods_pro_time" placeholder=""></td>
+                    </tr>
+                    <tr>
+                        <th>商品产地</th>
+                        <td colspan="3"><input class="form-control bg-light border-0 small" type="text" name="goods_location"></td>
+                    </tr>
+                    <tr>
+                        <th>商品类型</th>
+                        <td colspan="3">
+                            <select name="goods_type" class="form-control bg-light border-0 small">
+                                <option value="0">商品类型</option>
+                                {% for goods_type in goods_type_list %}
+                                    <option value="{{ goods_type.id }}">{{ goods_type.type_label }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th colspan="5" style="text-align: center">
+                            <input type="submit" class="btn btn-warning btn-block" value="提交">
+                        </th>
+                    </tr>
+                </table>
+        </form>
+    </div>
+{% endblock %}
